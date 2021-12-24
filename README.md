@@ -15,4 +15,4 @@ see `wifi --help` for use
 
 ## Dependency
 
-> nmcli
+> network-manager
