@@ -33,6 +33,3 @@ def main(args=None):
       device = args.device
      
   os.system("nmcli d wifi connect '{}'{} ifname {}".format(ssid, passwd, device))
-
-if __name__ == "__main__":
-    sys.exit(main())
