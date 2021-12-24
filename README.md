@@ -4,7 +4,7 @@ Menu for nmcli
 
 ## Install
 ```
-$ git clone github.com/SharkAce/wifi-menu.git
+$ git clone https://github.com/SharkAce/wifi-menu.git
 $ sudo python3 wifi-menu/setup.py install
 ```
 
