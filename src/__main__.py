@@ -32,4 +32,4 @@ def main(args=None):
   else:
       device = args.device
      
-  os.system("nmcli d wifi connect '{}'{} ifname {}".format(ssid, passwd, device))
+  os.system("""nmcli d wifi connect "{}"{} ifname {}""".format(ssid, passwd, device))
