@@ -6,9 +6,9 @@ def main(args=None):
 
   parser.add_argument("-r", "--rescan", help="scans for nearby networks", action="store_true")
   parser.add_argument("-l", "--list", help="prints a list of networks", action="store_true")
-  parser.add_argument("-n", "--nopass", help="use to connect without password", action="store_true")
+  parser.add_argument("-o", "--nopass", help="use to connect without password", action="store_true")
   parser.add_argument("-d", "--device", help="Manually select device", action="store")
-
+  parser.add_argument("-n", "--nop", help="No opperation", action="store")
 
   args = parser.parse_args()
 
@@ -18,18 +18,19 @@ def main(args=None):
   if args.list:
       os.system("clear ; nmcli dev wifi list ; echo")
 
-  ssid = input("SSID: ")
+  if not args.nop:
+      ssid = input("SSID: ")
 
-  passwd = ""
-  if not args.nopass:
-      in_passwd = input("Password: ")
-      if in_passwd != "":
-          passwd = " password " + in_passwd
+      passwd = ""
+      if not args.nopass:
+          in_passwd = input("Password: ")
+          if in_passwd != "":
+              passwd = " password " + in_passwd
 
-  if args.device == None:
-      device = os.popen("""iw dev | awk '$1=="Interface"{print $2}'""").read()
-   
-  else:
-      device = args.device
-     
-  os.system("""nmcli d wifi connect "{}"{} ifname {}""".format(ssid, passwd, device))
+      if args.device == None:
+          device = os.popen("""iw dev | awk '$1=="Interface"{print $2}'""").read()
+       
+      else:
+          device = args.device
+      
+      os.system("""nmcli d wifi connect "{}"{} ifname {}""".format(ssid, passwd, device))
